@@ -61,11 +61,6 @@ export default function Signup({ navigation }) {
       setLoading(true)
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const userId = userCredential.user.uid;
-      await setDoc(doc(db, 'users', userId), {
-        email,
-        username,
-        createdAt: serverTimestamp(),
-      });
       setEmail('');
       setPassword('');
       setUsername('');

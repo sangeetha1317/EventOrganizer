@@ -37,7 +37,6 @@ export async function editEvent(id, data) {
   }
 }
 
-// Function to delete an event
 export async function deleteEvent(id) {
   try {
     const docRef = doc(firestore, 'Events', id);

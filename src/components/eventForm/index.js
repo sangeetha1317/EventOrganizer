@@ -153,7 +153,7 @@ export default function EventForm({ navigation, route }) {
                     onPress={() => (id === undefined ? handleAddEventForm() : handleEditEvent())}
                     disabled={!eventName || !eventType || !dateTime}
                 >
-                    <Text style={styles.buttonText}>Add the event</Text>
+                    <Text style={styles.buttonText}> {id === undefined ? "Add the event" : "Update the event"}</Text>
                 </TouchableOpacity>
             </View>
         </View>
