@@ -5,10 +5,12 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
+  ActivityIndicator
 } from "react-native";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../database/config";
 import styles from "./styles";
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function Signup({ navigation }) {
   const [email, setEmail] = useState("");
@@ -77,6 +79,13 @@ export default function Signup({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <View style={styles.headerInfo}>
+            <Ionicons name="calendar" size={100} color="#4a235a" />
+            <Text style={styles.header}>Event Organizer</Text>
+        </View>
+        <Text style={styles.subHeader}>
+        Join Us Today! Create your account to start organizing your events.
+        </Text>  
       {loading && (
                 <View style={styles.loadingOverlay}>
                     <ActivityIndicator size="large" color="#2856ad" />

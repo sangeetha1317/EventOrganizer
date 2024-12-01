@@ -11,6 +11,7 @@ import {
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../database/config";
 import styles from "./styles";
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function Login ({ navigation }) {
   const [loading, setLoading] = useState(false);
@@ -83,6 +84,13 @@ export default function Login ({ navigation }) {
 
   return (
     <View style={styles.container}>
+        <View style={styles.headerInfo}>
+            <Ionicons name="calendar" size={100} color="#4a235a" />
+            <Text style={styles.header}>Event Organizer</Text>
+        </View>
+        <Text style={styles.subHeader}>
+            Log in to manage and organize your events effortlessly.
+        </Text>
         {loading && (
             <View style={styles.loadingOverlay}>
                 <ActivityIndicator size="large" color="#2856ad" />

@@ -83,4 +83,23 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginBottom: 40,
   },
+  headerInfo: {
+    flexDirection: 'col',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  header: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#4a235a',
+    marginLeft: 20
+},
+subHeader: {
+    fontSize: 16,
+    color: '#757575',
+    textAlign: 'center',
+    marginVertical: 10,
+    paddingHorizontal: 20,
+    marginBottom: 30
+},
 });
