@@ -40,6 +40,26 @@ export default function EventList() {
         }, [fetchEvents])
     );
 
+    const editEvent = (id) => navigation.navigate('AddEvent', { id });
+
+    const deleteEvent = async (id) => {
+        try {
+            setLoading(true);
+            const success = await database.deleteEvent(id);
+            if (success) {
+                setEvents(events.filter(event => event.id !== id));
+                Alert.alert("Success", "Event deleted successfully.");
+            } else {
+                Alert.alert("Error", "Failed to delete event.");
+            }
+        } catch (error) {
+            console.error("Error deleting event:", error);
+            Alert.alert("Error", "Unable to delete event.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const formatDateTime = (date) =>
         date.toDate().toLocaleString('en-US', {
             year: 'numeric',
@@ -59,6 +79,16 @@ export default function EventList() {
                 </View>
                 <Text style={styles.eventType}>Event type: {item.eventType}</Text>
                 <Text style={styles.eventDate}>Date: {formatDateTime(item.dateTime)}</Text>
+                <View style={styles.actionIcons}>
+                    <TouchableOpacity style={styles.actionButton} onPress={() => editEvent(item.id)}>
+                        <MaterialIcons name="edit" size={20} color="#6200ea" />
+                        <Text style={styles.actionText}>Edit</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.actionButton} onPress={() => deleteEvent(item.id)}>
+                        <MaterialIcons name="delete" size={20} color="#FF6347" />
+                        <Text style={styles.actionText}>Delete</Text>
+                    </TouchableOpacity>
+                </View>
             </TouchableOpacity>
         </View>
     );

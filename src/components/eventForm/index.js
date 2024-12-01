@@ -83,12 +83,35 @@ export default function EventForm({ navigation, route }) {
         }
     };
 
+    const handleEditEvent = async () => {
+        const data = {
+            name: eventName,
+            eventType: eventType,
+            dateTime: Timestamp.fromDate(dateTime),
+            favourite: favourite,
+            email: user.email
+        };
+        try {
+            setLoading(true);
+            const isUpdated = await database.editEvent(id, data);
+            if (isUpdated) {
+                navigation.goBack();
+            } else {
+                Alert.alert('Error updating event', 'Please try again later.');
+            }
+        } catch (error) {
+            Alert.alert('Error updating event', 'Please try again later.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <View style={styles.container}>
             {loading && (
                 <View style={styles.loadingOverlay}>
                     <ActivityIndicator size="large" color="#ffffff" />
-                    <Text style={styles.loadingText}>Processing...</Text>
+                    <Text style={styles.loadingText}>Loading...</Text>
                 </View>
             )}
 

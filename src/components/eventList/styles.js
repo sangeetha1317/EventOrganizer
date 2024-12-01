@@ -33,6 +33,23 @@ export default styles = StyleSheet.create({
         color: '#757575',
         marginVertical: 4
     },
+    editButton: {
+        backgroundColor: '#6200ea',
+        paddingVertical: 8,
+        paddingHorizontal: 16,
+        borderRadius: 8
+    },
+    deleteButton: {
+        backgroundColor: '#FF6347',
+        paddingVertical: 8,
+        paddingHorizontal: 16,
+        borderRadius: 8
+    },
+    buttonText: {
+        color: '#fff',
+        fontSize: 14,
+        textAlign: 'center'
+    },
     loadingOverlay: {
         flex: 1,
         justifyContent: 'center',
@@ -82,5 +99,20 @@ export default styles = StyleSheet.create({
         color: '#333',
         flex: 1,
         marginRight: 8,
+    },
+    actionIcons: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        marginTop: 12,
+    },
+    actionButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginRight: 16,
+    },
+    actionText: {
+        fontSize: 14,
+        color: '#757575',
+        marginLeft: 4,
     }
 })

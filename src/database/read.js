@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs, getDoc, query, where, doc } from 'firebase/firestore';
 import { firestore } from './config';
 
 export async function fetchEvents(email) {
@@ -19,4 +19,18 @@ function processQuerySnapshot(querySnapshot) {
         });
     });
     return data;
+}
+
+export async function fetchEventById(id) {
+    const docRef = doc(firestore, "Events", id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        return {
+            id: docSnap.id,  
+            ...docSnap.data()
+        };
+    } else {
+        console.log("No such document!");
+    }
 }
