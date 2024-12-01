@@ -7,7 +7,8 @@ import {
     ActivityIndicator,
     Alert,
 } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useAuthentication } from '../../hooks/useAuthentication';
 import * as database from '../../database';
 import styles from './styles';
@@ -16,6 +17,7 @@ export default function EventList() {
     const { user } = useAuthentication();
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(false);
+    const navigation = useNavigation();
 
     const fetchEvents = useCallback(async () => {
         if (user?.email) {
@@ -54,14 +56,12 @@ export default function EventList() {
             >
                 <View style={styles.eventHeader}>
                     <Text style={styles.eventName}>{item.name}</Text>
-                   
                 </View>
-                <Text style={styles.eventLocation}>Location: {item.location}</Text>
+                <Text style={styles.eventType}>Event type: {item.eventType}</Text>
                 <Text style={styles.eventDate}>Date: {formatDateTime(item.dateTime)}</Text>
             </TouchableOpacity>
         </View>
     );
-    
 
     return (
         <View style={styles.container}>
@@ -84,6 +84,9 @@ export default function EventList() {
                 }
                 showsVerticalScrollIndicator={false}
             />
+            <TouchableOpacity style={styles.fab} onPress={() => navigation.navigate('AddEvent')}>
+                <MaterialIcons name="add" size={35} color="#fff" />
+            </TouchableOpacity>
         </View>
     );
 }

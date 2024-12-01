@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import EventList from "../components/eventList";
 import Ionicons from '@expo/vector-icons/Ionicons';
+import EventForm from "../components/eventForm";
 
 export default function HomeNaviagtor() {
   const Tab = createBottomTabNavigator();
@@ -16,6 +17,13 @@ export default function HomeNaviagtor() {
           name='Events'
           component={EventList}>
         </Stack.Screen>
+
+        <Stack.Screen
+          name='AddEvent'
+          component={EventForm}
+          options={{ title: 'Add Event' }}>
+        </Stack.Screen>
+
       </Stack.Navigator>
     )
   };

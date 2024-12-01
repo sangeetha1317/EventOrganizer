@@ -23,13 +23,14 @@ export default styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 9
     },
-    eventLocation: {
+    eventType: {
         fontSize: 14,
-        color: '#757575'
+        fontStyle: 'italic',
+        color: '#273746'
     },
     eventDate: {
         fontSize: 12,
-        color: '#9e9e9e',
+        color: '#757575',
         marginVertical: 4
     },
     loadingOverlay: {
@@ -56,6 +57,20 @@ export default styles = StyleSheet.create({
         fontSize: 18,
         color: '#757575'
     },
+    fab: {
+        position: 'absolute',
+        bottom: 16,
+        right: 16,
+        width: 60,
+        height: 60,
+        backgroundColor: '#6200ea',
+        borderRadius: 28,
+        justifyContent: 'center',
+        alignItems: 'center',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+    },
     eventHeader: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -64,7 +79,6 @@ export default styles = StyleSheet.create({
     eventName: {
         fontSize: 20,
         fontWeight: '600',
-        fontStyle: 'italic',
         color: '#333',
         flex: 1,
         marginRight: 8,

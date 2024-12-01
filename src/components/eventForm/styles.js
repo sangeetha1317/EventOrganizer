@@ -1,0 +1,76 @@
+import { StyleSheet } from 'react-native';
+
+export default styles = StyleSheet.create({
+      container: {
+          flex: 1,
+          backgroundColor: "#f8f9fa",
+          paddingHorizontal: 20,
+      },
+      section: {
+          backgroundColor: "#ffffff",
+          padding: 10,
+          paddingTop: 20,
+          marginVertical: 8,
+          borderRadius: 12,
+          shadowColor: "#000",
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.1,
+          shadowRadius: 4,
+          elevation: 3,
+      },
+      sectionTitle: {
+          fontSize: 17,
+          fontWeight: "600",
+          marginBottom: 12,
+          color: "#2856ad",
+      },
+      input: {
+          borderWidth: 1,
+          borderColor: "#d9d9d9",
+          borderRadius: 8,
+          padding: 10,
+          marginBottom: 16,
+          fontSize: 16,
+          backgroundColor: "#fff",
+      },
+      button: {
+          position: "absolute",
+          top: 10,
+          width: '90%',
+          height: 50,
+          borderRadius: 30,
+          right: 25,
+          backgroundColor: "#2856ad",
+          justifyContent: "center",
+          alignItems: "center",
+          shadowColor: "#000",
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.3,
+          shadowRadius: 4,
+          elevation: 5,
+      },
+      buttonText: {
+          color: "#ffffff",
+          fontSize: 16,
+          fontWeight: "bold",
+      },
+      datePickerTrigger: {
+          borderWidth: 1,
+          borderColor: "#d9d9d9",
+          borderRadius: 8,
+          padding: 12,
+          marginBottom: 16,
+          backgroundColor: "#fff",
+      },
+      loadingOverlay: {
+          backgroundColor: "rgba(0, 0, 0, 0.4)",
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 100
+      },
+      loadingText: {
+          color: "#fff",
+          marginTop: 8,
+          fontSize: 16,
+      },
+  });  
