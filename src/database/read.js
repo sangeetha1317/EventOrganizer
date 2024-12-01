@@ -33,4 +33,17 @@ export async function fetchEventById(id) {
     } else {
         console.log("No such document!");
     }
+
+}
+
+export async function getFavouriteEvents(email) {
+    const dbCollection = collection(firestore, 'Events')
+    const dbQuery = query(dbCollection, where('favourite', '==', true), where('email', '==', email)
+    );
+    const querySnapshot = await getDocs(dbQuery);
+
+    return processQuerySnapshot(querySnapshot)
+
+   
+
 }

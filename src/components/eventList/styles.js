@@ -80,7 +80,7 @@ export default styles = StyleSheet.create({
         right: 16,
         width: 60,
         height: 60,
-        backgroundColor: '#6200ea',
+        backgroundColor: '#4a235a',
         borderRadius: 28,
         justifyContent: 'center',
         alignItems: 'center',
@@ -114,5 +114,14 @@ export default styles = StyleSheet.create({
         fontSize: 14,
         color: '#757575',
         marginLeft: 4,
+    },
+    logout: {
+        flexDirection: 'row',
+        marginRight: 13
+    },
+    logoutText: {
+        color: "#6200EE",
+        fontSize: 15,
+        marginRight: 10
     }
 })

@@ -1,6 +1,7 @@
 
 import { firestore } from './config';
 import { doc, collection, addDoc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
 export async function addEvent(data) {
     try{
@@ -13,9 +14,19 @@ export async function addEvent(data) {
   }
 }
 
+export async function updateEventFavourite(id, data) {
+  try {
+      const docRef = doc(firestore, 'Events', id);
+      await updateDoc(docRef, data)
+      return true;
+  } catch (e) {
+    console.log('error', e)
+      return false;
+  }
+}
+
 export async function editEvent(id, data) {
   try {
-    
     const docRef = doc(firestore, 'Events', id);
     await updateDoc(docRef, data);
     return true;
@@ -26,6 +37,7 @@ export async function editEvent(id, data) {
   }
 }
 
+// Function to delete an event
 export async function deleteEvent(id) {
   try {
     const docRef = doc(firestore, 'Events', id);

@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import EventList from "../components/eventList";
 import Ionicons from '@expo/vector-icons/Ionicons';
+import FavouriteEvent from "../components/favouriteEvent";
 import EventForm from "../components/eventForm";
 
 export default function HomeNaviagtor() {
@@ -30,13 +31,15 @@ export default function HomeNaviagtor() {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={({ route }) => ({
-        tabBarActiveTintColor: '#145a32',
+        tabBarActiveTintColor: '#4a235a',
         tabBarInactiveTintColor: 'gray',
         headerTitleAlign: 'center',
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           if (route.name === 'Event List') {
             iconName = focused ? 'home' : 'home-outline';
+          } else {
+            iconName = focused ? 'heart-sharp' : 'heart-outline'
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         }
@@ -45,6 +48,11 @@ export default function HomeNaviagtor() {
           name="Event List"
           component={EventStack}
           options={{ headerShown: false }}
+        />
+       <Tab.Screen
+          name="Favourites"
+          component={FavouriteEvent}
+          options={{ headerShown: true }}
         />
 
       </Tab.Navigator>

@@ -40,6 +40,26 @@ export default function EventList() {
         }, [fetchEvents])
     );
 
+    const handleFavorite = async (id) => {
+        try {
+            const updatedEvents = events.map(event =>
+                event.id === id
+                    ? { ...event, favourite: !event.favourite }
+                    : event
+            );
+            setEvents(updatedEvents);
+
+            const success = await database.updateEventFavourite(id, {
+                favourite: !events.find(event => event.id === id)?.favourite,
+            });
+
+            if (!success) throw new Error("Database update failed.");
+        } catch (error) {
+            console.error("Error updating favorite:", error);
+            Alert.alert("Error", "Unable to update favorite status.");
+        }
+    };
+
     const editEvent = (id) => navigation.navigate('AddEvent', { id });
 
     const deleteEvent = async (id) => {
@@ -80,8 +100,16 @@ export default function EventList() {
                 <Text style={styles.eventType}>Event type: {item.eventType}</Text>
                 <Text style={styles.eventDate}>Date: {formatDateTime(item.dateTime)}</Text>
                 <View style={styles.actionIcons}>
+                    <TouchableOpacity style={styles.actionButton} onPress={() => handleFavorite(item.id)}>
+                        <MaterialIcons
+                            name={item.favourite ? 'favorite' : 'favorite-border'}
+                            size={20}
+                            color={item.favourite ? '#FF6347' : '#757575'}
+                        />
+                        <Text style={styles.actionText}>Favorite</Text>
+                    </TouchableOpacity>
                     <TouchableOpacity style={styles.actionButton} onPress={() => editEvent(item.id)}>
-                        <MaterialIcons name="edit" size={20} color="#6200ea" />
+                        <MaterialIcons name="edit" size={20} color="#4a235a" />
                         <Text style={styles.actionText}>Edit</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.actionButton} onPress={() => deleteEvent(item.id)}>
